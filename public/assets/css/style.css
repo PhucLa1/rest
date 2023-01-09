@@ -1,0 +1,7 @@
+.active{
+    display: block;
+    color: red;
+}
+.nonactive{
+    display: none;
+}
