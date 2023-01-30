@@ -1,5 +1,6 @@
 <body class="  "  style="background:url(../public/assets/images/dashboard.png);    background-attachment: fixed;
     background-size: cover;">
+<?php include 'toast_message.php';?>
 <!-- loader Start -->
 <div id="loading">
     <div class="loader simple-loader">

@@ -2,7 +2,7 @@
 include_once 'database.php';
 class m_ct_don_hang extends database{
     public function read_ct_don_hang_by_id_datmon($id){
-        $sql='select * from chi_tiet_don_hang where id_dat_mon=? and trang_thai=1';
+        $sql='select * from chi_tiet_don_hang where id_dat_mon=?';
         $this->setQuery($sql);
         return $this->loadAllRows(array($id));
     }

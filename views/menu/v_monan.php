@@ -158,7 +158,7 @@
                                                 },
                                                 success:function(response) {
                                                     if(response==1){
-                                                        alert("Bạn không thế gọi món vì chưa chọn món nào cả")
+                                                        alert("Bạn không thể gọi món khi mà bạn chưa chọn món")
                                                     }
                                                     else if(response==2){
                                                         alert("Bạn đã thanh toán nên không thể gọi món");
@@ -203,25 +203,18 @@
                                 include_once 'models/m_monan.php';
                                 include_once 'models/m_ct_don_hang.php';
                                 $m_ct_don_hang=new m_ct_don_hang();
-                                $ct_don_hang=$m_ct_don_hang->read_ct_don_hang_by_id_datmon($_GET['id_dat_mon']);
+                                $ct_don_hang=$m_ct_don_hang->read_ct_don_hang_by_id_datmon($_POST['id_dat_mon']);
                                 if(!empty($ct_don_hang)){
                                     //Nếu mảng chi tiết đơn hàng được đọc bởi id_dat_mon mà rỗng thì sẽ không thực hiện in ra,vì khi đó nó sẽ không có lần gọi món, thì no
                                     //in ra thông báo là warning nếu làm như vậy
-                                    $lan_goi_mon=end($ct_don_hang)->lan_goi_mon;
                                     $tong_tien=0;
-
-                                    for($i=1;$i<=$lan_goi_mon;$i++){
-                                        echo '<br>';
-                                        echo 'Lần gọi món '.$i;
-                                        echo '<br>';
-                                        $chi_tiet_don_hang=$m_ct_don_hang->read_ct_don_hang_by_lan_goi_mon_and_id_datmon($i,$_GET['id_dat_mon']);
-                                        $string='';
-                                        foreach ($chi_tiet_don_hang as $value){
-                                            $color=$value->da_len_mon<$value->so_luong?'red':'green';
-                                            $m_monan=new m_monan();
-                                            $monan=$m_monan->read_monan_by_id($value->id_mon_an);
-                                            $tong_tien+=$monan->gia_tien*$value->so_luong;  //Tong so tien phai tra cho bua an do
-                                            $string.='                                <div id="monan_'.$value->id_mon_an.'" class="rounded-pill bg-soft-primary iq-my-cart">
+                                    $string='';
+                                    foreach ($ct_don_hang as $value){
+                                    $color=$value->da_len_mon<$value->so_luong?'red':'green';
+                                    $m_monan=new m_monan();
+                                    $monan=$m_monan->read_monan_by_id($value->id_mon_an);
+                                    $tong_tien+=$monan->gia_tien*$value->so_luong;  //Tong so tien phai tra cho bua an do
+                                    $string.='                                <div id="monan_'.$value->id_mon_an.'" class="rounded-pill bg-soft-primary iq-my-cart">
                                     <div class="d-flex align-items-center justify-content-between profile-img4">
                                         <div class="profile-img11">
                                             <img src="public/assets/images/layouts/'.$monan->hinh_anh.'" class="img-fluid rounded-pill avatar-115 blur-shadow position-end" alt="img">
@@ -252,15 +245,14 @@
                               </svg>
                            </span>
                                             <p class="mb-0 text-dark">$'.$monan->gia_tien.'</p>
-                                            <span  id="lenmon_'.$value->id_ct_don_hang.'"  class="mb-1" style="color: '.$color.'">Đã lên món X '.$value->da_len_mon.'</span>
+                                            <span  style="color: '.$color.'" id="lenmon_'.$value->id_ct_don_hang.'"  class="mb-1">Đã lên món X '.$value->da_len_mon.'</span>
                                         </div>
                                     </div>
                                 </div>';
-                                        }
-                                        echo $string;
-                                    }
-                                    echo '<br><br> Tổng tiền phải thanh toán cho bữa ăn là :'.$tong_tien;
-                                }
+                    }
+                    echo $string;
+                }
+                echo '<br><br> Tổng tiền phải thanh toán cho bữa ăn là :'.$tong_tien;
                                 ?>
                             </div>
                         </div>

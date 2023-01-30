@@ -8,7 +8,7 @@ class c_ban
             header('location: ban-add.php');
         }
         $m_ban = new m_ban();
-        $ban = $m_ban->read_ban();
+        $ban = $m_ban->read_danh_sach_ban();
         $view = "views/ban/v_ban-list.php";
         include "templates/layout.php";
     }
@@ -38,7 +38,7 @@ class c_ban
         $m_ban = new m_ban();
         if (isset($_GET['id'])) {
             $id_ban = $_GET['id'];
-            $ban_detail = $m_ban->read_ban_by_id_ban($id_ban);
+            $ban_detail = $m_ban->read_ban_by_only_id_ban($id_ban);
             if (isset($_POST['cancle'])) {
                 header('location: ban-list.php');
             } elseif (isset($_POST['submit'])) {
@@ -79,19 +79,31 @@ class c_ban
             include_once 'models/m_ct_don_hang.php';
             include_once 'models/m_ban.php';
             $m_ban=new m_ban();
-            $m_ban->delete_ban($_POST['id_ban']);
             $m_datmon=new m_datmon();
-            $m_datmon->delete_datmon($_POST['id_ban']);
-            date_default_timezone_set('Asia/Ho_Chi_Minh');
-            $date = date('Y-m-d H:i:s');
-            $m_datmon->update_thoi_gian_ra_by_id_ban($date,$_POST['id_ban']);
             $m_ct_don_hang=new m_ct_don_hang();
             $datmon=$m_datmon->read_datmon_id_ban($_POST['id_ban']);
             $id_datmon=$datmon->id_dat_mon;
-            $m_ct_don_hang->update_trang_thai_by_id_datmon($id_datmon);
-            echo ',$0';
+            $ct_don_hang=$m_ct_don_hang->read_ct_don_hang_by_id_datmon($id_datmon);
+            $ok=0;
+            foreach ($ct_don_hang as $value){
+                if($value->so_luong!=$value->da_len_mon){
+                    $ok=1;
+                }
+            }
+            if($ok==0){
+                $m_ban->delete_ban($_POST['id_ban']);
+                $m_datmon->delete_datmon($_POST['id_ban']);
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $date = date('Y-m-d H:i:s');
+                $m_datmon->update_thoi_gian_ra_by_id_ban($date,$_POST['id_ban']);
+                $m_ct_don_hang->update_trang_thai_by_id_datmon($id_datmon);
+                echo ',$0';
+            }
+            else{
+                echo 1;
+                //truong hop nay la chua len day du mon cho ban do
+            }
         }
-
     }
 
     public function dat_ban(){
@@ -118,7 +130,7 @@ class c_ban
                 $id_dat_mon=end($datmon)->id_dat_mon;  //Id đặt món này là cái id mà chúng ta vừa thêm vào
 
                 //Xử lí phần QRcode
-                $content = 'http://localhost/restaurant_MVC/input_kh.php?id_dat_mon='.$id_dat_mon ;
+                $content = 'http://localhost/rest/input_kh.php?id_dat_mon='.$id_dat_mon ;
                 $path = '../images/';
                 $qrcode = $path.time().".png";  //Đường dẫn đến file cần ghi
                 QRcode::png($content,$qrcode) ;  //Lưu ảnh vào đường dẫn file
@@ -134,5 +146,24 @@ class c_ban
     }
 
 
+    public function show_lichsu_ban(){
+        include_once 'models/m_ban.php';
+        include_once 'models/m_datmon.php';
+        include_once 'models/m_ct_don_hang.php';
+        $m_ct_don_hang=new m_ct_don_hang();
+        $m_ban=new m_ban();
+        $m_datmon=new m_datmon();
+        if(isset($_GET['id_ban']) && !isset($_GET['id_dat_mon'])){
+            $ban=$m_ban->read_ban_by_only_id_ban($_GET['id_ban']);
+            $datmons=$m_datmon->read_datmon_by_id_ban($_GET['id_ban']);
+            $view = "views/lich_su/v_lich_su.php";
+            include "templates/layout.php";
+        }
+        if(isset($_GET['id_dat_mon'])){
+            $view = "views/lich_su/v_chi_tiet.php";
+            include "templates/layout.php";
+        }
+
+    }
 }
 ?>

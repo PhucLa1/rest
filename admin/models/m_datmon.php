@@ -2,9 +2,14 @@
 include_once 'database.php';
 class m_datmon extends database {
     public function read_datmon_id_ban($id_ban){
-        $sql='select * from dat_mon where id_ban=?';
+        $sql='select * from dat_mon where id_ban=? and trang_thai=1';
         $this->setQuery($sql);
         return $this->loadRow(array($id_ban));
+    }
+    public function read_datmon_by_id_ban($id_ban){
+        $sql='select * from dat_mon where id_ban=?';
+        $this->setQuery($sql);
+        return $this->loadAllRows(array($id_ban));
     }
     public function read_datmon(){
         $sql='select * from dat_mon';

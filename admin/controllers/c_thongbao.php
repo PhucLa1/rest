@@ -17,9 +17,11 @@ class c_thongbao{
                 $time_content=($minute>60)?($hour>24?$day.' ngày trước':$hour.' tiếng trước'):$minute.' phút trước';
 
                 $ban=$m_ban->read_ban_by_id_ban($thongbaos[$i]->id_ban);
-                $ten_ban=$ban->ten_ban;
-                $content=($thongbaos[$i]->loai_thong_bao)==1?$ten_ban.' cần thanh toán':$ten_ban.' cần giúp đỡ từ nhân viên';
-                echo '<a href="#" class="iq-sub-card">
+                if(!empty($ban)){
+                    $ten_ban=$ban->ten_ban;
+                    $content=($thongbaos[$i]->loai_thong_bao)==1?$ten_ban.' cần thanh toán':$ten_ban.' cần giúp đỡ từ nhân viên';
+                    $color=$thongbaos[$i]->trang_thai==1?'red':'green';
+                    echo '<a id="thongbao_'.$thongbaos[$i]->id_thong_bao.'"  onclick="read('.$thongbaos[$i]->id_thong_bao.')" style="color: '.$color.'" class="iq-sub-card">
                                             <div class="d-flex align-items-center">
                                                 <div class="ms-3 w-100">
                                                     <div class="d-flex justify-content-between align-items-center">
@@ -29,7 +31,17 @@ class c_thongbao{
                                                 </div>
                                             </div>
                                         </a>';
+                }
             }
+        }
+    }
+
+    public function read_thongbao(){
+        if(isset($_POST['id_thongbao'])){
+            include_once 'models/m_thongbao.php';
+            $m_thongbao=new m_thongbao();
+            $m_thongbao->update_trangthai_by_id($_POST['id_thongbao']);
+            echo 'green';
         }
     }
 }

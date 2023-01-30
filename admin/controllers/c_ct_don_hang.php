@@ -10,15 +10,9 @@ class c_ct_don_hang{
             if(!empty($ct_don_hang)){
                 //Nếu mảng chi tiết đơn hàng được đọc bởi id_dat_mon mà rỗng thì sẽ không thực hiện in ra,vì khi đó nó sẽ không có lần gọi món, thì no
                 //in ra thông báo là warning nếu làm như vậy
-                $lan_goi_mon=end($ct_don_hang)->lan_goi_mon;
                 $tong_tien=0;
-                for($i=1;$i<=$lan_goi_mon;$i++){
-                    echo '<br>';
-                    echo 'Lần gọi món '.$i;
-                    echo '<br>';
-                    $chi_tiet_don_hang=$m_ct_don_hang->read_ct_don_hang_by_lan_goi_mon_and_id_datmon($i,$_POST['id_dat_mon']);
                     $string='';
-                    foreach ($chi_tiet_don_hang as $value){
+                    foreach ($ct_don_hang as $value){
                         $color=$value->da_len_mon<$value->so_luong?'red':'green';
                         $m_monan=new m_monan();
                         $monan=$m_monan->read_monan_by_id($value->id_mon_an);
@@ -34,16 +28,18 @@ class c_ct_don_hang{
                                                                 <div id="lenmon_'.$value->id_ct_don_hang.'">
                                     <small style="color: '.$color .'"  class="float-start font-size-12">Đã lên món X '.$value->da_len_mon .'</small>
                                 </div>
+                                <p><input type="number"></p>
                                 <hr class="my-4">
                             </div>
                         </div>';
                     }
                     echo $string;
                 }
-            }
             echo 'pay $'.$tong_tien;
+            }
+
         }
-    }
+
 
     public function Served(){
         //Hàm thực hiện khi mà món ăn được phục vụ xong thì nó sẽ +1 vào phần đã lên món

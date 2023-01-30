@@ -18,19 +18,19 @@ class c_ct_don_hang{
                 include_once 'models/m_ct_don_hang.php';
                 $m_ct_don_hang=new m_ct_don_hang();
                 $ct_don_hang=$m_ct_don_hang->read_ct_don_hang_by_id_datmon($_POST['id_dat_mon']);
-                if(empty($ct_don_hang)){
-                    $lan_goi_mon=1;
-                }
-                else{//Khi có số lần gọi món rồi thì khi mà nhấn gọi món lần tiếp theo thì sẽ là lần gọi món mới nhất cộng thêm 1
-                    $lan_goi_mon=1+end($ct_don_hang)->lan_goi_mon;
-                }
+                $array_mon_an= $m_ct_don_hang->read_id_monan_by_id_datmon($_POST['id_dat_mon']);
                 $mieu_ta=$_SESSION['mieu_ta'];
                 foreach($mieu_ta as $key => $value) {
                     //Mỗi lần nhấn gọi món thì dữ liệu sẽ được thêm vào trong database chi tiết đơn hàng
                     $mieu_ta_mon_an = explode("+", $value); //mang : 0:so luong, 1:hinh anh ,2: gia tien ,3 :id_mon_an ,key :ten mon an
-                    $m_ct_don_hang->insert_data($mieu_ta_mon_an[0],$mieu_ta_mon_an[3],$_POST['id_dat_mon'],$key,$lan_goi_mon);
+                    if(in_array($mieu_ta_mon_an[3],$array_mon_an)){
+                        $so_luong=$m_ct_don_hang->read_so_luong_by_id_monan_and_id_datmon($mieu_ta_mon_an[3],$_POST['id_dat_mon'])->so_luong;
+                        $m_ct_don_hang->update_so_luong_by_id_monan_and_id_dat_mon($so_luong+$mieu_ta_mon_an[0],$mieu_ta_mon_an[3],$_POST['id_dat_mon']);
+                    }
+                    else{
+                        $m_ct_don_hang->insert_data($mieu_ta_mon_an[0],$mieu_ta_mon_an[3],$_POST['id_dat_mon'],$key,$mieu_ta_mon_an[2]);
+                    }
                 }
-
                 //Sau khi đặt món xong thì nó sẽ reset lại cái giỏ hàng(Nghĩa là sẽ hủy đi hết tất cả các biến SESSION)
                 session_destroy();
                 include_once 'controllers/c_monan.php';
@@ -55,16 +55,11 @@ class c_ct_don_hang{
             if(!empty($ct_don_hang)){
                 //Nếu mảng chi tiết đơn hàng được đọc bởi id_dat_mon mà rỗng thì sẽ không thực hiện in ra,vì khi đó nó sẽ không có lần gọi món, thì no
                 //in ra thông báo là warning nếu làm như vậy
-                $lan_goi_mon=end($ct_don_hang)->lan_goi_mon;
                 $tong_tien=0;
 
-                for($i=1;$i<=$lan_goi_mon;$i++){
-                    echo '<br>';
-                    echo 'Lần gọi món '.$i;
-                    echo '<br>';
-                    $chi_tiet_don_hang=$m_ct_don_hang->read_ct_don_hang_by_lan_goi_mon_and_id_datmon($i,$_POST['id_dat_mon']);
+
                     $string='';
-                    foreach ($chi_tiet_don_hang as $value){
+                    foreach ($ct_don_hang as $value){
                         $color=$value->da_len_mon<$value->so_luong?'red':'green';
                         $m_monan=new m_monan();
                         $monan=$m_monan->read_monan_by_id($value->id_mon_an);
@@ -110,7 +105,7 @@ class c_ct_don_hang{
                 echo '<br><br> Tổng tiền phải thanh toán cho bữa ăn là :'.$tong_tien;
             }
         }
-    }
+
 
     public function showDatMon(){
         //Hàm này dùng để hỗ trợ khi mà mình click vào đặt hàng thì bên phía admin sẽ hiện ra được những gì mình chọn

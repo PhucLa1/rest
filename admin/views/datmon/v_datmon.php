@@ -45,8 +45,7 @@
         });
     }
 </script>
-<aside
-        class="sidebar sidebar-default sidebar-hover sidebar-mini navs-pill-all ">
+<aside class="sidebar sidebar-default sidebar-hover sidebar-mini navs-pill-all ">
     <div class="sidebar-header d-flex align-items-center justify-content-start">
         <a href="../index.html" class="navbar-brand">
             <!--Logo start-->
@@ -517,12 +516,6 @@
         <div class="navbar-collapse" id="sidebar">
             <!-- Sidebar Menu Start -->
             <ul class="navbar-nav iq-main-menu">
-                <li class="nav-item static-item">
-                    <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                        <span class="default-icon">Home</span>
-                        <span class="mini-icon">-</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#home" role="button" aria-expanded="false" aria-controls="home">
                         <i class="icon">
@@ -531,7 +524,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z" fill="currentColor"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Dashboard</span>
+                        <span class="item-name">Quản lí bàn</span>
                         <i class="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -540,7 +533,7 @@
                     </a>
                     <ul class="sub-nav collapse" id="home" data-bs-parent="#sidebar">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="../index.html">
+                            <a class="nav-link " aria-current="page" href="ban-list.php">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>
@@ -549,11 +542,11 @@
                                     </svg>
                                 </i>
                                 <i class="sidenav-mini-icon"> U</i>
-                                <span class="item-name">User</span>
+                                <span class="item-name">Hiện danh sách bàn</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="../admin-dashboard.html">
+                            <a class="nav-link " aria-current="page" href="ban-add.php">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>
@@ -561,31 +554,11 @@
                                         </g>
                                     </svg>
                                 </i>
-                                <i class="sidenav-mini-icon">A </i>
-                                <span class="item-name">Admin</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../restaurant-dashboard.html">
-                                <i class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                        <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                        </g>
-                                    </svg>
-                                </i>
-                                <i class="sidenav-mini-icon">R </i>
-                                <span class="item-name">Restaurant</span>
+                                <i class="sidenav-mini-icon"> U</i>
+                                <span class="item-name">Thêm bàn</span>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li><hr class="hr-horizontal"></li>
-                <li class="nav-item static-item">
-                    <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                        <span class="default-icon">Pages</span>
-                        <span class="mini-icon">-</span>
-                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-special" role="button" aria-expanded="false" aria-controls="sidebar-special">
@@ -595,7 +568,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.164 6.08279C15.4791 6.08712 15.7949 6.09145 16.1119 6.09469C19.5172 6.09469 22 8.52241 22 11.875V16.1813C22 19.5339 19.5172 21.9616 16.1119 21.9616C14.7478 21.9905 13.3837 22.0001 12.0098 22.0001C10.6359 22.0001 9.25221 21.9905 7.88813 21.9616C4.48283 21.9616 2 19.5339 2 16.1813V11.875C2 8.52241 4.48283 6.09469 7.89794 6.09469C9.18351 6.07542 10.4985 6.05615 11.8332 6.05615C12.3238 6.05615 12.8145 6.05615 13.3052 6.06579C13.9238 6.06579 14.5425 6.07427 15.164 6.08279ZM10.8518 14.7459H9.82139V15.767C9.82139 16.162 9.48773 16.4896 9.08538 16.4896C8.67321 16.4896 8.34936 16.162 8.34936 15.767V14.7459H7.30913C6.90677 14.7459 6.57311 14.4279 6.57311 14.0233C6.57311 13.6283 6.90677 13.3008 7.30913 13.3008H8.34936V12.2892C8.34936 11.8942 8.67321 11.5667 9.08538 11.5667C9.48773 11.5667 9.82139 11.8942 9.82139 12.2892V13.3008H10.8518C11.2542 13.3008 11.5878 13.6283 11.5878 14.0233C11.5878 14.4279 11.2542 14.7459 10.8518 14.7459ZM15.0226 13.1177H15.1207C15.5231 13.1177 15.8567 12.7998 15.8567 12.3952C15.8567 12.0002 15.5231 11.6727 15.1207 11.6727H15.0226C14.6104 11.6727 14.2866 12.0002 14.2866 12.3952C14.2866 12.7998 14.6104 13.1177 15.0226 13.1177ZM16.7007 16.4318H16.7988C17.2012 16.4318 17.5348 16.1139 17.5348 15.7092C17.5348 15.3143 17.2012 14.9867 16.7988 14.9867H16.7007C16.2885 14.9867 15.9647 15.3143 15.9647 15.7092C15.9647 16.1139 16.2885 16.4318 16.7007 16.4318Z" fill="currentColor"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Special Pages</span>
+                        <span class="item-name">Menu</span>
                         <i class="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -604,7 +577,7 @@
                     </a>
                     <ul class="sub-nav collapse" id="sidebar-special" data-bs-parent="#sidebar">
                         <li class="nav-item">
-                            <a class="nav-link " href="dish-detail.html">
+                            <a class="nav-link " href="menu.php">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>
@@ -613,11 +586,11 @@
                                     </svg>
                                 </i>
                                 <i class="sidenav-mini-icon">D </i>
-                                <span class="item-name">Dish detail</span>
+                                <span class="item-name">Hiện menu</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="add-to-cart.html">
+                            <a class="nav-link " href="monan_add.php">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>
@@ -626,11 +599,11 @@
                                     </svg>
                                 </i>
                                 <i class="sidenav-mini-icon">A </i>
-                                <span class="item-name">Add To cart</span>
+                                <span class="item-name">Thêm món ăn</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="order-history.html">
+                            <a class="nav-link " href="danhmuc_add.php">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>
@@ -639,59 +612,7 @@
                                     </svg>
                                 </i>
                                 <i class="sidenav-mini-icon"> O </i>
-                                <span class="item-name">Order History</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="order-detail.html">
-                                <i class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                        <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                        </g>
-                                    </svg>
-                                </i>
-                                <i class="sidenav-mini-icon"> O </i>
-                                <span class="item-name">Order Detail</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="menu.html">
-                                <i class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                        <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                        </g>
-                                    </svg>
-                                </i>
-                                <i class="sidenav-mini-icon"> M </i>
-                                <span class="item-name">Menu</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="customer-review.html">
-                                <i class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                        <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                        </g>
-                                    </svg>
-                                </i>
-                                <i class="sidenav-mini-icon"> C </i>
-                                <span class="item-name">Costumer Review</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="restaurant-detail.html">
-                                <i class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                        <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                        </g>
-                                    </svg>
-                                </i>
-                                <i class="sidenav-mini-icon"> R </i>
-                                <span class="item-name">restaurant Detail</span>
+                                <span class="item-name">Thêm danh mục</span>
                             </a>
                         </li>
                     </ul>
@@ -884,7 +805,6 @@
                         </li>
                     </ul>
                 </li>
-                <li><hr class="hr-horizontal"></li>
                 <li class="nav-item static-item">
                     <a class="nav-link static-item disabled" href="#" tabindex="-1">
                         <span class="default-icon">Elements</span>
@@ -1959,6 +1879,52 @@
                                         </div>
                                     </div>
                                     <div style="height: 15rem; overflow-y: auto" id="notice" class="card-body p-0">
+                                        <script>
+                                            function read(id){
+                                                $.ajax({
+                                                    url : "thongbao.php",
+                                                    type : "post",
+                                                    data : {
+                                                        id_thongbao:id
+                                                    },
+                                                    success : function (result){
+                                                        $(`thongbao_${id}`).css('color','green');
+                                                    }
+                                                });
+                                            }
+
+                                        </script>
+                                        <?php             include_once 'models/m_thongbao.php';
+                                        include_once 'models/m_ban.php';
+                                        $m_ban=new m_ban();
+                                        $m_thongbao=new m_thongbao();
+                                        $thongbaos=$m_thongbao->read_thong_bao();
+                                        for ($i=count($thongbaos)-1;$i>=0;$i--){
+                                            date_default_timezone_set('Asia/Ho_Chi_Minh');
+                                            $date = date('Y/m/d H:i:s');
+                                            //Xử lí phần hiện thông báo với thời gian hiện tại
+                                            $minute=round((strtotime($date)-strtotime($thongbaos[$i]->thoi_gian_nhan))/60);  //Thời gian nhận tin nhắn cách thời gian hiện tại tính theo phút
+                                            $hour=round($minute/60);
+                                            $day=round($hour/24);
+                                            $time_content=($minute>60)?($hour>24?$day.' ngày trước':$hour.' tiếng trước'):$minute.' phút trước';
+
+                                            $ban=$m_ban->read_ban_by_id_ban($thongbaos[$i]->id_ban);
+                                            if(!empty($ban)){
+                                                $ten_ban=$ban->ten_ban;
+                                                $content=($thongbaos[$i]->loai_thong_bao)==1?$ten_ban.' cần thanh toán':$ten_ban.' cần giúp đỡ từ nhân viên';
+                                                $color=$thongbaos[$i]->trang_thai==1?'red':'green';
+                                                echo '<p style="color: '.$color.'"  class="iq-sub-card">
+                                            <div class="d-flex align-items-center">
+                                                <div class="ms-3 w-100">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="mb-0">'.$content.'</p>
+                                                        <small class="float-end font-size-12">'.$time_content.'</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </p>';
+                                            }
+                                        } ?>
                                     </div>
                                 </div>
                             </div>
@@ -2071,12 +2037,13 @@
                             <h4 class="card-title">Danh sách các bàn</h4>
                         </div>
                     </div>
-                    <div class="card-body px-0">
-                        <div class="iq-col-masonry m-0">
+                    <div  class="card-body px-0">
+                        <div  class="iq-col-masonry m-0">
                             <?php
                             foreach($bans as $ban){
                                 $trang_thai=$ban->trang_thai==1?'btn-outline-success':'btn-outline-danger';
                                 ?>
+                                    <button><a style="font-size: 11px" href="table_history.php?id_ban=<?php echo $ban->id_ban; ?>">Xem lịch sử bàn</a></button>
                             <button onclick="dat_ban(<?php echo $ban->id_ban ?>)" id="button_<?php echo $ban->id_ban ?>" type="button" class="btn <?php echo $trang_thai; ?> rounded iq-col-masonry-block">
                                 <script>
                                     function dat_ban(id){
@@ -2110,6 +2077,7 @@
                                 </svg>
                                 <?php echo $ban->ten_ban ?>
                             </button>
+
                             <?php } ?>
                         </div>
                     </div>
@@ -2133,7 +2101,7 @@
                                 <img id="qrcode_<?php echo $ban->id_ban; ?>" src="<?php echo empty($datmon)?'':$datmon->qrCode ?>" alt="qrcode">
                                 <p id="time_<?php echo $ban->id_ban; ?>" class="mb-0"><?php echo $datmon->thoi_gian_vao; ?></p>
                             </div>
-                            <img src="../public/assets/images/order-history/01.png" class="img-fluid rounded-pill avatar-50" alt="">
+
                         </div>
                         <div id="ban_<?php echo $ban->id_ban; ?>">
                         <?php
@@ -2144,13 +2112,7 @@
                             if(!empty($ct_don_hang)){
                                 //Nếu mảng chi tiết đơn hàng tìm kiếm theo id_dat_mon mà là rỗng vậy thì chúng ta sẽ không thể tìm nào đc phần tử
                                 //cuối cùng của nó,từ đó kết quả đưa ra sẽ không chặt chẽ
-                                $lan_goi_mon=end($ct_don_hang)->lan_goi_mon;
-                                for($i=1;$i<=$lan_goi_mon;$i++){
-                                    echo '<br>';
-                                echo 'Lần gọi món '.$i;
-                                echo '<br>';
-                                $chi_tiet_don_hang=$m_ct_don_hang->read_ct_don_hang_by_lan_goi_mon_and_id_datmon($i,$id_dat_mon);
-                                foreach ($chi_tiet_don_hang as $value){
+                                foreach ($ct_don_hang as $value){
                                     $monan=$m_monan->read_monan_by_id($value->id_mon_an);
                                     $tong_tien+=$monan->gia_tien*$value->so_luong;  //Tong so tien phai tra cho bua an do
                         ?>
@@ -2167,8 +2129,10 @@
                                 </div>
                                 <hr class="my-4">
                             </div>
+                            <script>
+                            </script>
                         </div>
-                        <?php }}} ?>
+                        <?php }} ?>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between align-items-center">
@@ -2216,6 +2180,7 @@
                 });
             }
 
+
             function payment(id){
                 $.ajax({
                     url : "ban.php",
@@ -2224,19 +2189,23 @@
                         id_ban:id
                     },
                     success : function (respon){
-                        let result=respon.split(',');
-                        //Trả giá tiền về lại là 0$
-                        $(`#pay_${id}`).html(result[1])
-                        //Xóa bàn đó đi
-                        let col=document.querySelector(`#col_${id}`);
-                        //Chuyển button về trạng thái rỗng
-                        setTimeout(function (){col.style.display='none'},1000)
-                        setTimeout(function (){$(`#ban_${id}`).html('')},1000)
-                        setTimeout(function (){
-                            document.querySelector(`#button_${id}`).classList.remove('btn-outline-success');
-                            document.querySelector(`#button_${id}`).classList.add('btn-outline-danger');
+                        if(respon==1){
+                            alert("Chưa lên hết món cho bàn này");
+                        }
+                        else{
+                            let result=respon.split(',');
+                            //Trả giá tiền về lại là 0$
+                            $(`#pay_${id}`).html(result[1])
+                            //Xóa bàn đó đi
+                            let col=document.querySelector(`#col_${id}`);
+                            //Chuyển button về trạng thái rỗng
+                            setTimeout(function (){col.style.display='none'},1000)
+                            setTimeout(function (){$(`#ban_${id}`).html('')},1000)
+                            setTimeout(function (){
+                                document.querySelector(`#button_${id}`).classList.remove('btn-outline-success');
+                                document.querySelector(`#button_${id}`).classList.add('btn-outline-danger');
                             },1000)
-
+                        }
                     }
                 });
             }
