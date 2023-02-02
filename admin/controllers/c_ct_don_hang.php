@@ -28,7 +28,6 @@ class c_ct_don_hang{
                                                                 <div id="lenmon_'.$value->id_ct_don_hang.'">
                                     <small style="color: '.$color .'"  class="float-start font-size-12">Đã lên món X '.$value->da_len_mon .'</small>
                                 </div>
-                                <p><input type="number"></p>
                                 <hr class="my-4">
                             </div>
                         </div>';

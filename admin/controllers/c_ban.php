@@ -8,7 +8,7 @@ class c_ban
             header('location: ban-add.php');
         }
         $m_ban = new m_ban();
-        $ban = $m_ban->read_danh_sach_ban();
+        $bans = $m_ban->read_danh_sach_ban();
         $view = "views/ban/v_ban-list.php";
         include "templates/layout.php";
     }
@@ -48,6 +48,7 @@ class c_ban
                 $result = $ban->edit_ban( $ten_ban, $so_cho_ngoi,$id_ban);
                 if ($result) {
                     echo "<script>alert('Sửa thành công')</script>";
+                    header('location: ban-list.php');
                 } else {
                     echo "<script>alert('Sửa không thành công')</script>";
                 }

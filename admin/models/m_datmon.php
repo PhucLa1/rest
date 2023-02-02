@@ -41,6 +41,11 @@ class m_datmon extends database {
         $this->setQuery($sql);
         $this->execute(array($qrcode,$id_dat_mon));
     }
+    public function read_datmon_by_thoi_gian_vao($thoi_gian_vao){
+        $sql="SELECT * FROM dat_mon WHERE thoi_gian_vao LIKE ?";
+        $this->setQuery($sql);
+        return $this->loadAllRows(array($thoi_gian_vao));
+    }
 }
 
 

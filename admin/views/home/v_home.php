@@ -1,19 +1,36 @@
 <main class="main-content">
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>
+    <?php include_once 'templates/taskbar.php'?>
+    <br><br>
+    <form method="post" action="">
+        <div class="form-group">
+            <label class="form-label" for="exampleInputmonth">Nhập tháng muốn xem biểu đồ doanh thu</label>
+            <input name="date" type="month" class="form-control" id="exampleInputmonth" >
+        </div>
+        <div class="text-center mt-5">
+            <input type="submit" class="btn btn-primary rounded-pill" value="Xem biểu đổ bán hàng">
+        </div>
+    </form>
     <?php
-    foreach ($datmons as $datmon){
-        $date_time=explode(" ",$datmon->thoi_gian_vao);
-        $date=explode("-",$date_time[0]);
-        $month=$date[1];
-        $year=$date[2];
-        echo $month;
-        echo '<br>';
+    if(isset($_POST['date']) && !empty($_POST['date'])){
+        $inputMonth=explode("-",$_POST['date'])[1];
+        $inputYear=explode("-",$_POST['date'])[0];
+        $thoi_gian_vao=$inputYear.'-'.$inputMonth.'%';
+        $datmons=$m_datmon->read_datmon_by_thoi_gian_vao($thoi_gian_vao);
+        $days=array();
+        for($i=1;$i<=31;$i++){
+            $days['Ngày '.$i]=0;
+        }
+        foreach ($datmons as $datmon){
+            //Năm và tháng được lấy ra từ dữ liệu để so sánh
+            $date_time=explode(" ",$datmon->thoi_gian_vao);
+            $date=explode("-",$date_time[0]);
+            $day=(int)$date[2];
+            $days['Ngày '.$day]+=$m_ct_don_hang->cal_money_by_id_dat_mon($datmon->id_dat_mon);
+        }
     }
     ?>
-    <div class="text-center mt-5">
-        <a type="button" class="btn btn-primary rounded-pill">Xem biểu đồ bán hàng</a>
+    <div>
+        <canvas id="myChart"></canvas>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -24,18 +41,10 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',
-                    'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12','Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12','Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
+                labels: [],
                 datasets: [{
-                    label: 'Số tiền thu được',
-                    data: [12, 21, 3, 5, 2, 3,5,12, 21, 3, 5, 2, 3,5,12, 21, 3, 5, 2, 3,5,12, 21, 3, 5, 2, 3,5,21, 3, 5, 2, 3,5,12, 21, 3, 5, 2, 3,5,
-                        21, 3, 5, 2, 3,5,12, 21, 3, 5, 2, 3,5,2],
+                    label: <?php echo json_encode('Doanh thu '.$_POST['date'])?>,
+                    data: <?php echo json_encode($days); ?>,
                     borderWidth: 1
                 }]
             },

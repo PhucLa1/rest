@@ -1,4 +1,5 @@
 <main class="main-content">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="position-relative">
         <!--Nav Start-->
         <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
@@ -535,27 +536,60 @@
                                         </h1>
                                     </div>
                                     <p class="mb-4">Get <span class="text-primary">FREE delivery </span>on every weekend.</p>
-                                    <a onclick="Notification('pay')" type="button" class=" btn btn-primary rounded-pill">Thanh toán</a>
+                                    <a onclick="Notification('pay',<?php echo $_GET['id_dat_mon']; ?>)" type="button" class=" btn btn-primary rounded-pill">Thanh toán</a>
 <!--                                    lay id dat mon va cho no vao input hidden-->
                                     <input id="id_dat_mon" type="hidden" value="<?php echo $_GET['id_dat_mon']; ?>">
                                     <!--                    //Đoạn mã script để gọi nhân viên phục vụ thanh toán-->
                                     <script>
                                         let x=document.getElementById('id_dat_mon').value;
-                                        function Notification($loai_thong_bao){
+                                        function Notification($loai_thong_bao,$id_dat_mon){
                                             $.ajax({
                                                 type:'post',
                                                 url:'thongbao.php',
                                                 data:{
                                                     id_dat_mon:x,
-                                                    loai_thong_bao:$loai_thong_bao
+                                                    loai_thong_bao:$loai_thong_bao,
+                                                    id_dat_mon:$id_dat_mon
                                                 },
                                                 success:function(response) {
-                                                    console.log(response)
+                                                    swal({
+                                                        title: "Bạn chắc chắn chứ",
+                                                        text: "",
+                                                        icon: "warning",
+                                                        buttons: true,
+                                                        dangerMode: true,
+                                                    })
+                                                        .then((willDelete) => {
+                                                            if (willDelete) {
+                                                                if(response==1){
+                                                                    swal({
+                                                                        title: "",
+
+                                                                        text: "Đã thanh toán nên không thể thanh toán hay gọi nhân viên",
+                                                                        icon: "warning",
+                                                                    });
+                                                                }
+                                                                else{
+                                                                    if($loai_thong_bao=='pay'){
+                                                                        swal("Bạn đã gọi nhân viên thanh toán", {
+                                                                            icon: "success",
+                                                                        });
+                                                                    }
+                                                                    else{
+                                                                        swal("Bạn đã gọi nhân viên hỗ trợ", {
+                                                                            icon: "success",
+                                                                        });
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                swal("Đã hủy việc gọi nhân viên");
+                                                            }
+                                                        });
                                                 }
                                             })
                                         }
                                     </script>
-                                    <a onclick="Notification('help')" style="margin-left: 2rem" type="button"  class=" btn btn-primary rounded-pill">Gọi phục vụ</a>
+                                    <a onclick="Notification('help',<?php echo $_GET['id_dat_mon']; ?>)" style="margin-left: 2rem" type="button"  class=" btn btn-primary rounded-pill">Gọi phục vụ</a>
                                 </div>
                             </div>
                         </div>

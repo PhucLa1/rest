@@ -157,15 +157,38 @@
                                                     dat_mon:"dat_mon"
                                                 },
                                                 success:function(response) {
-                                                    if(response==1){
-                                                        alert("Bạn không thể gọi món khi mà bạn chưa chọn món")
+                                                    if(response==2){
+                                                        swal({
+                                                            title: "",
+                                                            text: "Đã thanh toán nên không thể gọi món",
+                                                            icon: "warning",
+                                                        });
                                                     }
-                                                    else if(response==2){
-                                                        alert("Bạn đã thanh toán nên không thể gọi món");
+                                                    else if(response==1){
+                                                        swal({
+                                                            title: "",
+                                                            text: "Không thể gọi món vì chưa chọn món",
+                                                            icon: "warning",
+                                                        });
                                                     }
                                                     else{
-                                                        alert("Bạn đã gọi món thành công");
-                                                        $('#gio_hang').html(response);
+                                                        swal({
+                                                            title: "Bạn chắc chắn chứ",
+                                                            text: "",
+                                                            icon: "warning",
+                                                            buttons: true,
+                                                            dangerMode: true,
+                                                        })
+                                                            .then((willDelete) => {
+                                                                if (willDelete) {
+                                                                    swal("Bạn đã gọi món thành công", {
+                                                                        icon: "success",
+                                                                    });
+                                                                    $('#gio_hang').html(response);
+                                                                } else {
+                                                                    swal("Đã hủy việc gọi món");
+                                                                }
+                                                            });
                                                     }
                                                 }
                                             })

@@ -1,4 +1,4 @@
 <?php
-include "controllers/c_useradd.php";
-$user=new c_useradd();
-$user->index();
+include "controllers/c_user.php";
+$user=new c_user;
+$user->logup();

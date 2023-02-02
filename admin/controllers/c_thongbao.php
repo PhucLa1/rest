@@ -16,7 +16,7 @@ class c_thongbao{
                 $day=round($hour/24);
                 $time_content=($minute>60)?($hour>24?$day.' ngày trước':$hour.' tiếng trước'):$minute.' phút trước';
 
-                $ban=$m_ban->read_ban_by_id_ban($thongbaos[$i]->id_ban);
+                $ban=$m_ban->read_ban_by_only_id_ban($thongbaos[$i]->id_ban);
                 if(!empty($ban)){
                     $ten_ban=$ban->ten_ban;
                     $content=($thongbaos[$i]->loai_thong_bao)==1?$ten_ban.' cần thanh toán':$ten_ban.' cần giúp đỡ từ nhân viên';

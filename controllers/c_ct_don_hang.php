@@ -8,12 +8,13 @@ class c_ct_don_hang{
             include_once 'models/m_datmon.php';
             $m_datmon=new m_datmon();
             $datmon=$m_datmon->read_datmon_id($_POST['id_dat_mon']);
-            if((empty($_SESSION['ten_mon_an']))){
-                echo 1;  //Ở đây nghĩa là khách chưa chọn bất cứ món gì mà đã bấm đặt món
-            }
-            elseif (empty($datmon)){
+            if (empty($datmon)){
                 echo 2;  //Tuc la ban da thanh toan va khong the dat mon
             }
+            else if((empty($_SESSION['ten_mon_an']))){
+                echo 1;  //Ở đây nghĩa là khách chưa chọn bất cứ món gì mà đã bấm đặt món
+            }
+
             else{
                 include_once 'models/m_ct_don_hang.php';
                 $m_ct_don_hang=new m_ct_don_hang();

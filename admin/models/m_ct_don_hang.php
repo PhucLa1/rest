@@ -31,4 +31,9 @@ class m_ct_don_hang extends database{
         $this->setQuery($sql);
         $this->execute(array($id));
     }
+    public function cal_money_by_id_dat_mon($id_dat_mon){
+        $sql="SELECT SUM(gia_tien*so_luong) as tong_tien FROM chi_tiet_don_hang WHERE id_dat_mon=?";
+        $this->setQuery($sql);
+        return $this->loadRow(array($id_dat_mon))->tong_tien;
+    }
 }

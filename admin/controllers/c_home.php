@@ -8,7 +8,7 @@ if(isset($_SESSION['user'])){
             include_once 'models/m_ct_don_hang.php';
             include_once 'models/m_datmon.php';
             $m_datmon=new m_datmon();
-            $datmons= $m_datmon->read_datmon();
+            $m_ct_don_hang=new m_ct_don_hang();
             $view= 'views/home/v_home.php';
             include 'templates/layout.php';
         }
