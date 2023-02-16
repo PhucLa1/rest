@@ -49,6 +49,7 @@ class c_ct_don_hang{
 
     public function showHistory(){
         if(isset($_POST['orderHistory']) && isset($_POST['id_dat_mon'])){
+            $tong_tien=0;
             include_once 'models/m_monan.php';
             include_once 'models/m_ct_don_hang.php';
             $m_ct_don_hang=new m_ct_don_hang();
@@ -56,7 +57,7 @@ class c_ct_don_hang{
             if(!empty($ct_don_hang)){
                 //Nếu mảng chi tiết đơn hàng được đọc bởi id_dat_mon mà rỗng thì sẽ không thực hiện in ra,vì khi đó nó sẽ không có lần gọi món, thì no
                 //in ra thông báo là warning nếu làm như vậy
-                $tong_tien=0;
+
 
 
                     $string='';

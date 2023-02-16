@@ -39,8 +39,13 @@ if(isset($_SESSION['user'])){
                 $hinh_anh=$monan->hinh_anh;
                 echo $kieu_mon_an;
             }
-            $view='views/monan/v_monan.php';
-            include 'templates/layout.php';
+            if($_SESSION['typeOfUser']==1){
+                $view='views/monan/v_monan.php';
+                include 'templates/layout.php';
+            }else{
+                header('location: error404.php');
+            }
+
         }
 
         public function index_list(){
@@ -51,8 +56,13 @@ if(isset($_SESSION['user'])){
             $m_monan=new m_monan();
             $count=$m_monan->read_count_monan();
             $monans=$this->read_monan_by_id_danhmuc();
-            $view='views/menu/v_monan.php';
-            include 'templates/layout.php';
+            if($_SESSION['typeOfUser']==1){
+                $view='views/menu/v_monan.php';
+                include 'templates/layout.php';
+            }
+            else{
+                header('location: error404.php');
+            }
         }
 
         public function read_monan_by_id_danhmuc(){

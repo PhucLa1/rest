@@ -9,8 +9,12 @@ if(isset($_SESSION['user'])){
             include_once 'models/m_datmon.php';
             $m_datmon=new m_datmon();
             $m_ct_don_hang=new m_ct_don_hang();
-            $view= 'views/home/v_home.php';
-            include 'templates/layout.php';
+            if($_SESSION['typeOfUser']==1){
+                $view= 'views/home/v_home.php';
+                include 'templates/layout.php';
+            }else{
+                header('location: error404.php');
+            }
         }
     }
 }

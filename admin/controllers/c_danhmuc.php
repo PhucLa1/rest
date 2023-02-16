@@ -15,8 +15,10 @@ if(isset($_SESSION['user'])){
                 $ten=$danhmuc->ten_danh_muc;
                 $hinh_anh=$danhmuc->hinh_anh;
             }
-            $view='views/danhmuc/v_danhmuc.php';
-            include 'templates/layout.php';
+            if($_SESSION['typeOfUser']==1){
+                $view='views/danhmuc/v_danhmuc.php';
+                include 'templates/layout.php';
+            }else{header('location: error404.php');}
         }
         public function read_all_danhmuc(){
             include "models/m_danhmuc.php";

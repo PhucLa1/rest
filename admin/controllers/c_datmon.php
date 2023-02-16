@@ -10,9 +10,12 @@ class c_datmon{
         $m_datmon=new m_datmon();
         $m_ct_don_hang=new m_ct_don_hang();
         $m_monan=new m_monan();
-
-        $view='views/datmon/v_datmon.php';
-        include 'templates/layout.php';
+        if(!isset($_SESSION['user'])){
+            $view='views/datmon/v_datmon.php';
+            include 'templates/layout.php';
+        }else{
+            header('location: login.php');
+        }
     }
 
 }

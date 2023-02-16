@@ -1,8 +1,7 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script>
-    swal({
-        title: "",
-        text: "Không thể gọi món vì chưa chọn món",
-        icon: "warning",
-    });
-</script>
+<?php
+session_start();
+$_SESSION['user']=1;
+if($_SESSION['user']==1){
+    ?>
+    <p>Hello</p>
+<?php } ?>

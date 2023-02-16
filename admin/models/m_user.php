@@ -21,7 +21,7 @@ class m_user extends database {
         return $this->loadRow(array(md5($password)));
     }
     public function add_user($username,$password,$email,$name){  //phuong thuc dang ki
-        $sql="INSERT INTO `nguoi_dung` (`ma_nguoi_dung`, `ma_loai_nguoi_dung`, `ho_ten`, `ten_dang_nhap`, `mat_khau`, `email`, `ngay_dang_ky`, `ngay_dang_nhap_cuoi`, `active`) VALUES (NULL, ?, ?, ?, ?, ?, '2022-12-11', '2022-12-20', '');";
+        $sql="INSERT INTO `nguoi_dung` (`ma_nguoi_dung`, `ma_loai_nguoi_dung`, `ho_ten`, `ten_dang_nhap`, `mat_khau`, `email`, `ngay_dang_ky`, `ngay_dang_nhap_cuoi`, `active`) VALUES (NULL, ?, ?, ?, ?, ?, '2022-12-11', '2022-12-20', '1');";
         $this->setQuery($sql);
         $this->execute(array(24,$name,$username,$password,$email));
         echo 'hello';

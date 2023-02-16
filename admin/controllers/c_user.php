@@ -14,7 +14,15 @@ class c_user{
             $rowOfUser=$m_user->read_user_by_id_pass($user,$pass);
             if(!empty($rowOfUser)){  //tai khoan va mat khau duoc nhap dung
                 $_SESSION['user']=$user;
-                header('location: home.php');
+                $_SESSION['typeOfUser']=$rowOfUser->ma_loai_nguoi_dung;
+                $_SESSION['nameOfUser']=$rowOfUser->ho_ten;
+                $_SESSION['idOfUser']=$rowOfUser->ma_nguoi_dung;
+                if($_SESSION['typeOfUser']==1){
+                    header('location: home.php');
+                }else{
+                    header('location: datmon.php');
+                }
+
             }
             else{   //Tai khoan va mat khau bi nhap sai
                 header('location:login.php');
@@ -47,8 +55,13 @@ class c_user{
             include 'models/m_user.php';
             $m_user=new m_user();
             $users=$m_user->read_all_user_list();
-            $view= 'views/user-list/v_user-list.php';
-            include 'templates/layout.php';
+            if($_SESSION['typeOfUser']==1){
+                $view= 'views/user-list/v_user-list.php';
+                include 'templates/layout.php';
+            }
+            else{
+                header('location: error404.php');
+            }
         }
         else{
             header('location : login.php');

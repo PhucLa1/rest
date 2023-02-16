@@ -13,10 +13,10 @@
     <link rel="shortcut icon" href="https://templates.iqonic.design/aprycot/html/dashboard/dist/assets/images/favicon.ico" />
 
     <!-- Library / Plugin Css Build -->
-    <link rel="stylesheet" href="public/assets/css/core/libs.min.css">
+    <link rel="stylesheet" href="../public/assets/css/core/libs.min.css">
 
     <!-- Custom Css -->
-    <link rel="stylesheet" href="public/assets/css/aprycot.mine209.css?v=1.0.0">  </head>
+    <link rel="stylesheet" href="../public/assets/css/aprycot.mine209.css?v=1.0.0">  </head>
 <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
 <!-- loader Start -->
 <div id="loading">
@@ -487,17 +487,18 @@
 <!-- loader END -->
 
 <div class="wrapper">
-    <script src="public/public/public/../cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="../public/../public/../public/../cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
     <div class="d-flex align-items-center justify-content-center vh-100">
         <div class="container text-center mt-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <img src="public/assets/images/error/01.png" class="img-fluid w-25" alt="">
-                    <img src="public/assets/images/error/02.png" class="img-fluid w-25 px-5" alt="">
-                    <img src="public/assets/images/error/01.png" class="img-fluid w-25" alt="">
+                    <img src="../public/assets/images/error/01.png" class="img-fluid w-25" alt="">
+                    <img src="../public/assets/images/error/02.png" class="img-fluid w-25 px-5" alt="">
+                    <img src="../public/assets/images/error/01.png" class="img-fluid w-25" alt="">
                     <h2 class="mb-0 mt-4">Không đủ quyền để vào trang này</h2>
-                    <p class="mt-2">Không đủ thẩm quyền để vào trang này</p>
+                    <p class="mt-2">Bạn không có đủ quyền để vào trang này</p>
                     <div class="d-flex justify-content-center">
+                        <a href="datmon.php" class="btn btn-primary">Trờ về trang đặt món</a>
                     </div>
                 </div>
             </div>
@@ -506,40 +507,41 @@
 </div>
 
 <!-- Required Library Bundle Script -->
-<script src="public/assets/js/core/libs.min.js"></script>
+<script src="../public/assets/js/core/libs.min.js"></script>
 
 <!-- External Library Bundle Script -->
-<script src="public/assets/js/core/external.min.js"></script>
+<script src="../public/assets/js/core/external.min.js"></script>
 
 <!-- Widgetchart JavaScript -->
-<script src="public/assets/js/charts/widgetcharts.js"></script>
+<script src="../public/assets/js/charts/widgetcharts.js"></script>
 
 <!-- Mapchart JavaScript -->
-<script src="public/assets/js/charts/vectore-chart.js"></script>
-<script src="public/assets/js/charts/dashboard.js"></script>
+<script src="../public/assets/js/charts/vectore-chart.js"></script>
+<script src="../public/assets/js/charts/dashboard.js"></script>
 
 <!-- Admin Dashboard Chart -->
-<script src="public/assets/js/charts/admin.js"></script>
+<script src="../public/assets/js/charts/admin.js"></script>
 
 <!-- fslightbox JavaScript -->
-<script src="public/assets/js/fslightbox.js"></script>
+<script src="../public/assets/js/fslightbox.js"></script>
 
 <!-- GSAP Animation -->
-<script src="public/assets/vendor/gsap/gsap.min.js"></script>
-<script src="public/assets/vendor/gsap/ScrollTrigger.min.js"></script>
-<script src="public/assets/js/animation/gsap-init.js"></script>
+<script src="../public/assets/vendor/gsap/gsap.min.js"></script>
+<script src="../public/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="../public/assets/js/animation/gsap-init.js"></script>
 
 <!-- Stepper Plugin -->
-<script src="public/assets/js/stepper.js"></script>
+<script src="../public/assets/js/stepper.js"></script>
 
 <!-- Form Wizard Script -->
-<script src="public/assets/js/form-wizard.js"></script>
+<script src="../public/assets/js/form-wizard.js"></script>
 
 <!-- app JavaScript -->
-<script src="public/assets/js/app.js"></script>
+<script src="../public/assets/js/app.js"></script>
 
 <!-- moment JavaScript -->
-<script src="public/assets/vendor/moment.min.js"></script>  </body>
+<script src="../public/assets/vendor/moment.min.js"></script>  </body>
 
 <!-- Mirrored from templates.iqonic.design/aprycot/html/dashboard/dist/dashboard/errors/error404.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Nov 2022 06:55:01 GMT -->
 </html>
+

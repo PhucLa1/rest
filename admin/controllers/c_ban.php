@@ -1,5 +1,8 @@
 <?php
 include ("models/m_ban.php");
+if(!isset($_SESSION)){
+    session_start();
+}
 class c_ban
 {
     public function ban_list()
@@ -9,8 +12,13 @@ class c_ban
         }
         $m_ban = new m_ban();
         $bans = $m_ban->read_danh_sach_ban();
-        $view = "views/ban/v_ban-list.php";
-        include "templates/layout.php";
+        if($_SESSION['typeOfUser']==1){
+            $view = "views/ban/v_ban-list.php";
+            include "templates/layout.php";
+        }
+        else{
+            header('location: error404.php');
+        }
     }
 
     public function add_ban()
@@ -29,8 +37,12 @@ class c_ban
                 echo "<script>alert('Thêm không thành công')</script>";
             }
         }
-        $view = "views/ban/v_ban-add.php";
-        include "templates/layout.php";
+        if($_SESSION['typeOfUser']==1){
+            $view = "views/ban/v_ban-add.php";
+            include "templates/layout.php";
+        }else{
+            header('location: error404.php');
+        }
     }
 
     public function edit_ban()
@@ -54,8 +66,12 @@ class c_ban
                 }
             }
         }
-        $view = "views/ban/v_ban-edit.php";
-        include "templates/layout.php";
+        if($_SESSION['typeOfUser']==1){
+            $view = "views/ban/v_ban-edit.php";
+            include "templates/layout.php";
+        }else{
+            header('location:error404.php');
+        }
     }
 
     public function delete_ban()

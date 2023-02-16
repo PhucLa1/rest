@@ -1,4 +1,8 @@
-
+<?php
+if(!isset($_SESSION)){
+    session_start();
+}
+?>
 <?php
 include "controllers/c_user.php";
 $c_user=new c_user();
@@ -562,6 +566,10 @@ $user=$c_user->read_infor_user_by_id();
                             </div>
                             <div class="d-flex justify-content-center">
                                 <input  type="submit" class="btn btn-primary" name="btn-logup" value="Hoàn tất sửa thông tin">
+                            </div>
+                            <?php $path=($_SESSION['typeOfUser']==1)?'home.php':'datmon.php' ?>
+                            <div class="d-flex justify-content-center">
+                                <a href=<?php echo $path; ?> class="btn btn-primary">Trờ về trang cũ</a>
                             </div>
                             <p class="text-center my-3">or sign in with other accounts?</p>
                             <div class="d-flex justify-content-center">
